@@ -14,12 +14,12 @@ function TodoItem({ todoItem, onDone, onDelete }) {
 function TodoList({ todoList, onChange }) {
   function handleDone(index) {
     todoList[index].done = !todoList[index].done;
-    onChange(todoList);
+    onChange([...todoList]);
   }
 
   function handleDelete(index) {
     todoList.splice(index, 1);
-    onChange(todoList);
+    onChange([...todoList]);
   }
 
   return (

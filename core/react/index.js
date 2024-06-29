@@ -1,5 +1,3 @@
-import { isObjDeepSame } from "./shared";
-
 const TEXT_NODE = "TEXT_NODE";
 
 const createTextNode = (text) => {
@@ -310,7 +308,7 @@ const useState = (init) => {
   const setState = (newState) => {
     const action = typeof newState === "function" ? newState : () => newState;
     const eagerState = action(stateHook.state);
-    if (isObjDeepSame(eagerState, stateHook.state)) return;
+    if (eagerState === stateHook.state) return;
     stateHook.queue.push(action);
 
     wipRoot = {
